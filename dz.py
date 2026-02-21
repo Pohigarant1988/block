@@ -31,3 +31,4 @@ class Loger:
 a = Loger("Привет")
 a.log()
 a.log()
+a.log()
