@@ -24,7 +24,7 @@ class Post(models.Model):
     publish_date = models.DateTimeField(auto_now_add=True, verbose_name="Дата публикации")
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name="Автор",
                                related_name="posts")
-    categoria = models.ManyToManyField(Cats, blank=True, verbose_name="Категория",
+    categoria = models.ForeignKey(Cats, on_delete=models.SET_DEFAULT,default= "", verbose_name="Категория",
                                        related_name="post_category")
     slug = models.SlugField(max_length=200, unique=True, verbose_name="слаг")
 
