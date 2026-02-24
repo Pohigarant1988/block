@@ -24,7 +24,7 @@ urlpatterns = [
 ]
 
 api_urls = [
-    path('api/posts', include("posts.urls")),
+    path('api/', include("posts.urls")),
 ]
 
 urlpatterns += api_urls

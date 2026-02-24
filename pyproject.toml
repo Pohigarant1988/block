@@ -4,8 +4,15 @@ version = "0.1.0"
 description = "Add your description here"
 requires-python = ">=3.13"
 dependencies = [
+    "cats>=0.2.0",
+    "db>=0.1.1",
     "django>=6.0.2",
+    "django-extensions>=4.1",
     "djangorestframework>=3.16.1",
+    "djangorestframework-stubs>=3.16.8",
+    "ipython>=9.10.0",
+    "shortcuts>=0.11.0",
+    "utils>=1.0.2",
 ]
 
 [tool.commitizen]

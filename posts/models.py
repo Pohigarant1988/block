@@ -12,7 +12,7 @@ class Post(models.Model):
     cat = models.ForeignKey("Cats", on_delete=models.SET_NULL, null=True, blank=True,
                             verbose_name="Категория",
                             related_name="post_category")
-    slug = models.SlugField(max_length=200, unique=True, verbose_name="слаг")
+    slug = models.SlugField(max_length=200, unique=True,blank=True, verbose_name="слаг")
 
     class Meta:
         ordering = ['-publish_date']
@@ -30,7 +30,7 @@ class Post(models.Model):
 
 class Cats(models.Model):
     name = models.CharField(max_length=100, verbose_name="Имя")
-    slug = models.SlugField(max_length=100, unique=True, db_index=True, verbose_name="Слаг")
+    slug = models.SlugField(max_length=100, blank=True, unique=True, db_index=True, verbose_name="Слаг")
 
     class Meta:
         ordering = ["name"]
@@ -40,6 +40,11 @@ class Cats(models.Model):
         return self.name
 
     def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = slugify(self.name)
+        if self.pk:
+            old = Cats.objects.get(pk = self.pk)
+            if old.name != self.name:
+                self.slug = slugify(self.name)
+        else:
+            if not self.slug:
+                self.slug = slugify(self.name)
         super().save(*args, **kwargs)
