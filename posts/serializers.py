@@ -17,7 +17,7 @@ class PostSerializer(serializers.ModelSerializer):
         write_only=True,  # Для создания и редоктирования, не для чтения
         source='category'  # ПОле ID связи которое ты указываешь, показывает на какое поле смотреть
     )
-    time_to_read = serializers.SerializerMethodField()
+    time_to_read1 = serializers.SerializerMethodField()
 
     class Meta:
         model = Post
@@ -27,5 +27,5 @@ class PostSerializer(serializers.ModelSerializer):
             'content': {'required': True}
         }  # ПОзволяет менять поведения полей сериализатора
 
-    def get_time_to_read(self,obj):
+    def get_time_to_read1(self,obj):
         return len(obj.content)/180
