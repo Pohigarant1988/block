@@ -1,4 +1,4 @@
-from django.conf import settings
+
 from django.db import models
 from django.utils.text import slugify
 
@@ -33,7 +33,8 @@ class Category(models.Model):
 
     class Meta:
         ordering = ["name"]
-        verbose_name = "Слаг"
+        verbose_name = "Категория"
+        verbose_name_plural = "Категории"
 
     def __str__(self):
         return self.name
