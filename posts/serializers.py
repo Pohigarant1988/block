@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Post, Category
+from .models import Post, Category, User
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -29,3 +29,6 @@ class PostSerializer(serializers.ModelSerializer):
 
     def get_time_to_read1(self,obj):
         return len(obj.content)/180
+
+class UserSerializer(serializers.ModelSerializer):
+    pass
